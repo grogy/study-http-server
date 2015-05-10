@@ -29,7 +29,8 @@ run: compile
 
 # clean generated files
 clean:
-	rm *.o
+	rm -rf *.o
+	rm -rf program.o.*
 
 
 # todo
