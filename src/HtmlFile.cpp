@@ -9,6 +9,12 @@ public:
 	string getString() {
 		return html;
 	}
+	string getMimeType() {
+		return "text/html";
+	}
+	int getSizeInBytes() {
+		return (int)html.size();
+	}
 private:
 	string html;
 };
