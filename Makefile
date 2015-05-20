@@ -20,6 +20,7 @@ compile:
 test: compile
 	g++ -std=c++11 -o test.o tests/test.cpp && ./test.o
 	g++ -std=c++11 -o test.o tests/INIReaderTest.cpp && ./test.o
+	g++ -std=c++11 -o test.o tests/HtmlFileTest.cpp && ./test.o
 
 
 # run program
