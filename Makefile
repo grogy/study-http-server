@@ -18,7 +18,6 @@ compile:
 # run unit test
 # compile is call because I can control all warning
 test: compile
-	g++ -std=c++11 -o test.o tests/test.cpp && ./test.o
 	g++ -std=c++11 -o test.o tests/INIReaderTest.cpp && ./test.o
 	g++ -std=c++11 -o test.o tests/HtmlFileTest.cpp && ./test.o
 	g++ -std=c++11 -o test.o tests/ResponseTest.cpp && ./test.o
