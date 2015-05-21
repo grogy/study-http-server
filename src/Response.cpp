@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include "HtmlFile.cpp"
 using namespace std;
 
 class Response

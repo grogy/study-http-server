@@ -1,6 +1,5 @@
 #define CATCH_CONFIG_MAIN
 #include "../catch.hpp"
-#include "../src/HtmlFile.cpp"
 #include "../src/Response.cpp"
 
 TEST_CASE("Success HTML response") {

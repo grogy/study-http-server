@@ -15,5 +15,5 @@ TEST_CASE("Complet request from browser") {
 		"Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.3\n";
 	Request * request = new Request(headers);
 	REQUIRE(request->getHost() == "domain.com");
-	REQUIRE(request->getURL() == "http://domain.com/detail/in/url.aspx");
+	REQUIRE(request->getURL() == "detail/in/url.aspx");
 }
