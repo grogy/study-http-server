@@ -10,13 +10,10 @@ class INIReaderException {};
 class INIReader {
 public:
 	INIReader() = delete;
-	INIReader(string pathToConfigurationFile) {
-		ifstream myfile(pathToConfigurationFile);
-		if (!myfile.is_open()) {
-			throw new INIReaderException();
-		}
+	INIReader(string configuration) {
+		istringstream lines(configuration);
 		string line;
-		while (getline(myfile, line)) {
+		while (getline(lines, line)) {
 			string key;
 			string value;
 			bool isSetKey = false;
@@ -29,7 +26,6 @@ public:
 			}
 			values.insert(pair<string, string>(key, value));
 		}
-		myfile.close();
 	}
 	string getValue(string key) {
 		if (values.find(key) == values.end()) {
