@@ -1,9 +1,15 @@
 #include <iostream>
+#include "program.cpp"
 
 using namespace std;
 
 int main(int argc, char **argv)
 {
-  cout << "Hello World!" << endl;
-  return 0;
+	try {
+		Program * program = new Program(argc, argv);
+		program->run(cout);
+	} catch (ProgramBadArgumentsException & e) {
+		cout << e;
+	}
+	return 0;
 }
