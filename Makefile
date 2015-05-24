@@ -30,7 +30,7 @@ test: compile
 
 # run program
 run: compile
-	./program.o param1 param2
+	./program.o examples/configuration.server.ini examples/configuration.map-files.ini
 
 
 # clean generated files
