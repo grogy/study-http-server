@@ -11,7 +11,7 @@ TEST_CASE("Build HTML response", "integrate") {
 		"Host: server.com\n";
 	Request * request = new Request(requestHeaders);
 
-	HtmlFile * htmlFile = new HtmlFile("tests/static/index.html");
+	HtmlFile * htmlFile = new HtmlFile("<h1>Here is a heading of page..</h1>\n");
 	Response * referenceResponse = new Response(htmlFile);
 
 	ResponseBuilder * builder = new ResponseBuilder(urlConfiguration, request);

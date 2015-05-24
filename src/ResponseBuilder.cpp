@@ -1,6 +1,7 @@
 #include "INIReader.cpp"
 #include "Request.cpp"
 #include "Response.cpp"
+#include "FileReader.cpp"
 using namespace std;
 
 class ResponseBuilder
@@ -13,7 +14,8 @@ public:
 	Response * build() {
 		string requireUrl = request->getURL();
 		string pathToFile = urlConfiguration->getValue(requireUrl);
-		HtmlFile * file = new HtmlFile(pathToFile);
+		FileReader * reader = new FileReader(pathToFile);
+		HtmlFile * file = new HtmlFile(reader->getContentInString());
 		Response * response = new Response(file);
 		return response;
 	}
