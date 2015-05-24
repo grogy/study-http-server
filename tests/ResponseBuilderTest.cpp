@@ -7,7 +7,7 @@ TEST_CASE("Build HTML response", "integrate") {
 	INIReader * urlConfiguration = new INIReader(urlConfigurationInString);
 
 	string requestHeaders =
-		"GET http://server.com/index.html HTTP/1.1\n"
+		"GET /index.html HTTP/1.1\n"
 		"Host: server.com\n";
 	Request * request = new Request(requestHeaders);
 

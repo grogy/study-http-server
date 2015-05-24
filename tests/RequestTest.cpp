@@ -4,7 +4,7 @@
 
 TEST_CASE("Complet request from browser") {
 	string headers =
-		"GET http://domain.com/detail/in/url.aspx HTTP/1.1\n"
+		"GET /detail/in/url.aspx HTTP/1.1\n"
 		"Host: domain.com\n"
 		"Connection: keep-alive\n"
 		"User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) Chrome/16.0.912.75 Safari/535.7\n"
