@@ -1,4 +1,5 @@
 #include <cstring>
+#include "Network.cpp"
 using namespace std;
 
 class ProgramBadArgumentsException {
@@ -25,12 +26,13 @@ public:
 		}
 	}
 	void run(ostream & stream) {
+		Network * network = new Network();
 		switch (state) {
 			case 1:
 				printHelp(stream);
 				break;
 			case 2:
-				stream << "TODO - Here missing implementation" << endl;
+				network->run("3490");
 				break;
 			default:
 				throw "Invalid state in program.";

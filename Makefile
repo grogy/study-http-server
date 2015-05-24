@@ -30,7 +30,7 @@ test: compile
 
 # run program
 run: compile
-	./program.o
+	./program.o param1 param2
 
 
 # clean generated files
