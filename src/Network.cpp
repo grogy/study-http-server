@@ -11,6 +11,10 @@
 #include <sys/wait.h>
 #include <signal.h>
 
+#include <map>
+#include <sstream>
+#include "ResponseBuilder.cpp"
+
 #define BACKLOG 10     // how many pending connections queue will hold
 #define MAXDATASIZE 1000 // Makes
 
@@ -68,7 +72,7 @@ private:
 				exit(1);
 			}
 
-			if (bind(sockfd, p->ai_addr, p->ai_addrlen) == -1) {
+			if (::bind(sockfd, p->ai_addr, p->ai_addrlen) == -1) {
 				close(sockfd);
 				perror("server: bind");
 				continue;
@@ -122,7 +126,14 @@ private:
 
 			if (!fork()) { // this is the child process
 				close(sockfd); // child doesn't need the listener
-				if (send(new_fd, "Hello, world!", 13, 0) == -1) {
+				std::string urlConfigurationInString = "homepage.html=tests/static/index.html\n";
+				INIReader * urlConfiguration = new INIReader(urlConfigurationInString);
+				std::string headers(buf);
+				Request * request = new Request(headers);
+				ResponseBuilder * builder = new ResponseBuilder(urlConfiguration, request);
+				Response * response = builder->build();
+				std::string mystring = response->getInString();
+				if (send(new_fd, mystring.c_str(), mystring.length(), 0) == -1) {
 					perror("send");
 				}
 				close(new_fd);
