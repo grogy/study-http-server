@@ -1,5 +1,6 @@
 #include <cstring>
 #include "Network.cpp"
+//#include "INIReader.cpp"
 using namespace std;
 
 class ProgramBadArgumentsException {
@@ -20,19 +21,23 @@ public:
 			if (argc < 3) {
 				throw ProgramBadArgumentsException();
 			}
-			pathToConfiguration = argv[1];
-			pathToConfiguration = argv[2];
+			FileReader * file1 = new FileReader(argv[1]);
+			configurationServer = new INIReader(file1->getContentInString());
+			FileReader * file2 = new FileReader(argv[2]);
+			configurationUrlMap = new INIReader(file2->getContentInString());
 			state = 2;
 		}
 	}
 	void run(ostream & stream) {
 		Network * network = new Network();
+		string port;
 		switch (state) {
 			case 1:
 				printHelp(stream);
 				break;
 			case 2:
-				network->run("3490");
+				port = configurationServer->getValue("port");
+				network->run(port.c_str());
 				break;
 			default:
 				throw "Invalid state in program.";
@@ -43,7 +48,7 @@ public:
 		stream << "This is a help. TODO.." << endl;
 	}
 private:
-	string pathToConfiguration;
-	string pathToURLMap;
 	short state; // todo - replace numbers something clever
+	INIReader * configurationServer;
+	INIReader * configurationUrlMap;
 };

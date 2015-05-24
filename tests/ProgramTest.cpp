@@ -21,15 +21,15 @@ TEST_CASE("Input incorrect count parameters") {
 TEST_CASE("Input correct count parameters") {
 	char * arr[3] = {
 		"program.o",
-		"/path/to/file.ini",
-		"/path/to/file2.ini"
+		"tests/valid-configuration.ini",
+		"tests/valid-configuration.ini"
 	};
 	REQUIRE_NOTHROW(Program * program = new Program(3, arr));
 }
 
 
 TEST_CASE("Display help") {
-	char * arr[3] = {
+	char * arr[2] = {
 		"program.o",
 		"--help"
 	};
