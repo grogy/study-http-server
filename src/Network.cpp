@@ -113,7 +113,6 @@ private:
 			inet_ntop(their_addr.ss_family, get_in_addr((struct sockaddr *)&their_addr), s, sizeof s);
 			printf("server: got connection from %s\n", s);
 
-			// Makes
 			char buf[MAXDATASIZE];
 			int numbytes = 0;
 			if ((numbytes = recv(new_fd, buf, MAXDATASIZE-1, 0)) == -1) {
@@ -121,8 +120,6 @@ private:
 				continue;
 			}
 			buf[numbytes] = '\0';
-			printf("client: received '%s'\n",buf);
-			// /Makes
 
 			if (!fork()) { // this is the child process
 				close(sockfd); // child doesn't need the listener
