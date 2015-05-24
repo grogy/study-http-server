@@ -29,10 +29,10 @@ class NetworkException {};
  */
 class Network {
 public:
-	void run(const char * port)
+	void run(const char * port, FileWriter * logWriter)
 	{
 		int sockfd = prepareSocket(port);
-		runLoop(sockfd);
+		runLoop(sockfd, logWriter);
 	}
 private:
 	/**
@@ -97,7 +97,7 @@ private:
 
 		return sockfd;
 	}
-	void runLoop(int sockfd) {
+	void runLoop(int sockfd, FileWriter * logWriter) {
 		while (true) {
 			int new_fd; //new connection on new_fd
 			struct sockaddr_storage their_addr; // connector's address information
@@ -133,6 +133,7 @@ private:
 				if (send(new_fd, mystring.c_str(), mystring.length(), 0) == -1) {
 					perror("send");
 				}
+				logWriter->append("[client " + string(s) + "] access to page: " + request->getURL() + "\n");
 				close(new_fd);
 				exit(0);
 			}

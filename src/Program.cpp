@@ -1,6 +1,7 @@
 #include <cstring>
+#include "FileWriter.cpp"
 #include "Network.cpp"
-//#include "INIReader.cpp"
+
 using namespace std;
 
 class ProgramBadArgumentsException {
@@ -30,14 +31,18 @@ public:
 	}
 	void run(ostream & stream) {
 		Network * network = new Network();
+		string pathToLogFile;
+		FileWriter * logWriter;
 		string port;
 		switch (state) {
 			case 1:
 				printHelp(stream);
 				break;
 			case 2:
+				pathToLogFile = configurationServer->getValue("log");
+				logWriter = new FileWriter(pathToLogFile);
 				port = configurationServer->getValue("port");
-				network->run(port.c_str());
+				network->run(port.c_str(), logWriter);
 				break;
 			default:
 				throw "Invalid state in program.";
