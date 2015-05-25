@@ -29,10 +29,10 @@ class NetworkException {};
  */
 class Network {
 public:
-	void run(const char * port, FileWriter * logWriter)
+	void run(const char * port, FileWriter * logWriter, INIReader * urlConfiguration)
 	{
 		int sockfd = prepareSocket(port);
-		runLoop(sockfd, logWriter);
+		runLoop(sockfd, logWriter, urlConfiguration);
 	}
 private:
 	/**
@@ -97,7 +97,7 @@ private:
 
 		return sockfd;
 	}
-	void runLoop(int sockfd, FileWriter * logWriter) {
+	void runLoop(int sockfd, FileWriter * logWriter, INIReader * urlConfiguration) {
 		while (true) {
 			int new_fd; //new connection on new_fd
 			struct sockaddr_storage their_addr; // connector's address information
@@ -123,8 +123,6 @@ private:
 
 			if (!fork()) { // this is the child process
 				close(sockfd); // child doesn't need the listener
-				std::string urlConfigurationInString = "homepage.html=tests/static/index.html\n";
-				INIReader * urlConfiguration = new INIReader(urlConfigurationInString);
 				std::string headers(buf);
 				Request * request = new Request(headers);
 				ResponseBuilder * builder = new ResponseBuilder(urlConfiguration, request);

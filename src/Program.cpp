@@ -1,4 +1,5 @@
 #include <cstring>
+#include "FolderScanner.cpp"
 #include "FileWriter.cpp"
 #include "Network.cpp"
 
@@ -34,15 +35,19 @@ public:
 		string pathToLogFile;
 		FileWriter * logWriter;
 		string port;
+		INIReader * urlConfiguration;
+		FolderScanner * scanner;
 		switch (state) {
 			case 1:
 				printHelp(stream);
 				break;
 			case 2:
+				scanner = new FolderScanner(configurationServer->getValue("root"));
+				urlConfiguration = new INIReader(scanner->getConfigurationString());
 				pathToLogFile = configurationServer->getValue("log");
 				logWriter = new FileWriter(pathToLogFile);
 				port = configurationServer->getValue("port");
-				network->run(port.c_str(), logWriter);
+				network->run(port.c_str(), logWriter, urlConfiguration);
 				break;
 			default:
 				throw "Invalid state in program.";
