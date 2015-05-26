@@ -16,7 +16,8 @@ compile: $(SOURCES:.cpp=.o)
 clean:
 	$(RM) $(SOURCES:.cpp=.o) $(EXECUTABLE)
 	rm -rf program.o.* # generate with Clang
-	rm -rf doc/
+	rm -rf doc/ makesvac/
+	rm makesvac.zip
 
 
 # run program
