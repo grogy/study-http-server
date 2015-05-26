@@ -1,3 +1,6 @@
 catch.hpp
 program.o.*
 *.o
+program
+
+doc/*
