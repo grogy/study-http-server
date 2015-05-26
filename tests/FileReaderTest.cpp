@@ -20,3 +20,11 @@ TEST_CASE("Read content from file") {
 		"log=/tmp/web.log\n"
 	);
 }
+
+
+TEST_CASE("Get file type from end of name") {
+	FileReader * reader = new FileReader("tests/valid-configuration.ini");
+	REQUIRE(reader->getTypeOfFile() == "ini");
+	FileReader * reader2 = new FileReader("examples/contact.html");
+	REQUIRE(reader2->getTypeOfFile() == "html");
+}
