@@ -13,7 +13,14 @@ Response * ResponseBuilder::build() {
 	string requireUrl = request->getURL();
 	string pathToFile = urlConfiguration->getValue(requireUrl);
 	FileReader * reader = new FileReader(pathToFile);
-	HtmlFile * file = new HtmlFile(reader->getContentInString());
+	FileType * file;
+	if (reader->getTypeOfFile() == "html") {
+		file = new HtmlFile(reader->getContentInString());
+	} else if (reader->getTypeOfFile() == "css") {
+		file = new CssFile(reader->getContentInString());
+	} else {
+		throw "Undefined file type";
+	}
 	Response * response = new Response(file);
 	delete reader;
 	return response;

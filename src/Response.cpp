@@ -1,29 +1,29 @@
-#include "headers/HtmlFile.h"
+#include "headers/FileType.h"
 #include "headers/Response.h"
 
 using namespace std;
 
 
-Response::Response(HtmlFile * html) {
-	htmlFile = html;
+Response::Response(FileType * html) {
+	file = html;
 }
 
 
 Response::~Response() {
-	delete htmlFile;
+	delete file;
 }
 
 
 string Response::getInString() {
 	stringstream out;
-	out << htmlFile->getSizeInBytes();
+	out << file->getSizeInBytes();
 	string size = out.str();
 	return "HTTP/1.1 200 OK\n"
 		"Cache-Control: private\n"
-		"Content-Type: " + htmlFile->getMimeType() + "; charset=utf-8\n"
+		"Content-Type: " + file->getMimeType() + "; charset=utf-8\n"
 		"X-Powered-By: HTTP-Server-By-Makes\n"
 		"Connection: close\n"
 		"Content-Length: " + size + "\n"
 		"\n" +
-		htmlFile->getString() + "\n";
+		file->getString() + "\n";
 }

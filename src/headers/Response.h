@@ -12,10 +12,10 @@ using namespace std;
 class Response
 {
 public:
-	Response(HtmlFile * html);
+	Response(FileType * html);
 	~Response();
 	string getInString();
 private:
-	HtmlFile * htmlFile;
+	FileType * file;
 };
 #endif

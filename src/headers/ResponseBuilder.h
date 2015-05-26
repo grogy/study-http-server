@@ -5,6 +5,8 @@
 #include "Request.h"
 #include "Response.h"
 #include "FileReader.h"
+#include "CssFile.h"
+#include "HtmlFile.h"
 
 using namespace std;
 
