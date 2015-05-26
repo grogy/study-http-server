@@ -1,22 +1,15 @@
-#include <string>
+#include "FileType.cpp"
 
 using namespace std;
 
-class HtmlFile
+class HtmlFile : public FileType
 {
 public:
 	HtmlFile(string str) {
-		html = str;
+		content = str;
 	}
-	string getString() {
-		return html;
-	}
-	string getMimeType() {
+	~HtmlFile() {} // only for remove warnings from compilators
+	string getMimeType() const {
 		return "text/html";
 	}
-	int getSizeInBytes() {
-		return (int)html.size();
-	}
-private:
-	string html;
 };

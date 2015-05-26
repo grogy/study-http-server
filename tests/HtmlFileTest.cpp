@@ -4,7 +4,7 @@
 
 TEST_CASE("Box for HTML data from file") {
 	string html = "<p>My text..</p>";
-	HtmlFile * htmlFile = new HtmlFile(html);
+	FileType * htmlFile = new HtmlFile(html);
 	REQUIRE(htmlFile->getString() == "<p>My text..</p>");
 	REQUIRE(htmlFile->getMimeType() == "text/html");
 	REQUIRE(htmlFile->getSizeInBytes() == 16);
