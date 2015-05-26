@@ -13,7 +13,7 @@ public:
 		this->pathToFile = pathToFile;
 	}
 	void write(string text) {
-		ofstream myfile(pathToFile);
+		ofstream myfile(pathToFile.c_str());
 		if (!myfile.is_open()) {
 			throw FileWriterException();
 		}
@@ -22,7 +22,7 @@ public:
 	}
 	void append(string text) {
 		ofstream myfile;
-		myfile.open(pathToFile, std::ios_base::app);
+		myfile.open(pathToFile.c_str(), std::ios_base::in | std::ios_base::out | std::ios_base::app);
 		if (!myfile.is_open()) {
 			throw FileWriterException();
 		}

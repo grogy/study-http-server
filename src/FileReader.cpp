@@ -10,7 +10,7 @@ class FileReaderException {};
 class FileReader {
 public:
 	FileReader(string pathToFile) {
-		ifstream myfile(pathToFile);
+		ifstream myfile(pathToFile.c_str());
 		if (!myfile.is_open()) {
 			throw FileReaderException();
 		}
