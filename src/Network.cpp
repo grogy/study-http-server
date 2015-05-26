@@ -8,6 +8,14 @@
 using namespace std;
 
 
+/**
+ * Run network connection in two steps
+ * This is only for better readibility - before it was in one function
+ * @param port             port for connection from configuration
+ * @param logWriter        handler for write log information
+ * @param urlConfiguration configuration for virtual memory
+ * @param state            pointer for stop infinity loop with SIGTERM
+ */
 void Network::run(const char * port, FileWriter * logWriter, INIReader * urlConfiguration, bool * state) const {
 	int sockfd = prepareSocket(port);
 	runLoop(sockfd, logWriter, urlConfiguration, state);

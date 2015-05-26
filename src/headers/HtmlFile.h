@@ -5,11 +5,25 @@
 
 using namespace std;
 
+/**
+ * Represent HTML file stored in disk
+ */
 class HtmlFile : public FileType
 {
 public:
+	/**
+	 * Inicialize HTML file to memory
+	 * @param str  content from file
+	 */
 	HtmlFile(string str);
-	~HtmlFile() {} // only for remove warnings from compilators
+	/**
+	 * This is only for remove warnings from compilators
+	 */
+	~HtmlFile() {};
+	/**
+	 * Get mime type for headers to response
+	 * @return mime type
+	 */
 	string getMimeType() const;
 };
 #endif
