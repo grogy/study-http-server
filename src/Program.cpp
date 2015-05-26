@@ -30,7 +30,7 @@ public:
 			state = 2;
 		}
 	}
-	void run(ostream & stream) {
+	void run(ostream & stream, bool * stateOfProgram) {
 		Network * network = new Network();
 		string pathToLogFile;
 		FileWriter * logWriter;
@@ -47,7 +47,7 @@ public:
 				pathToLogFile = configurationServer->getValue("log");
 				logWriter = new FileWriter(pathToLogFile);
 				port = configurationServer->getValue("port");
-				network->run(port.c_str(), logWriter, urlConfiguration);
+				network->run(port.c_str(), logWriter, urlConfiguration, stateOfProgram);
 				break;
 			default:
 				throw "Invalid state in program.";
