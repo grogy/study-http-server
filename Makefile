@@ -1,5 +1,21 @@
-all: compile doc
-	echo "All is done."
+CXX=g++
+CXXFLAGS=-Wall -pedantic -Wno-long-long -O0 -ggdb
+LDFLAGS=
+EXECUTABLE=program
+SOURCES=src/source.cpp src/Program.cpp src/Network.cpp src/FileReader.cpp src/FileWriter.cpp src/FolderScanner.cpp src/HtmlFile.cpp src/INIReader.cpp src/Request.cpp src/Response.cpp src/ResponseBuilder.cpp
+
+
+all: $(SOURCES:.cpp=.o) doc
+	$(CXX) $(LDFLAGS) $(SOURCES:.cpp=.o) -o $(EXECUTABLE)
+
+
+clean:
+	$(RM) $(SOURCES:.cpp=.o) $(EXECUTABLE)
+
+
+# run program
+run:
+	./$(EXECUTABLE) examples/configuration.server.ini examples/configuration.map-files.ini
 
 
 # install actual version of test library
@@ -10,14 +26,8 @@ install-library:
 	wget https://raw.githubusercontent.com/philsquared/Catch/master/single_include/catch.hpp
 
 
-# compile program
-compile:
-	g++ -std=c++11 -Wall -pedantic -Wno-long-long -Werror -O0 -ggdb -o program.o src/source.cpp
-
-
 # run unit test
-# compile is call because I can control all warning
-test: clean compile
+test: clean-tests
 	g++ -std=c++11 -o test.o tests/FileWriterTest.cpp && ./test.o
 	g++ -std=c++11 -o test.o tests/FileReaderTest.cpp && ./test.o
 	g++ -std=c++11 -o test.o tests/FolderScannerTest.cpp && ./test.o
@@ -30,13 +40,8 @@ test: clean compile
 	g++ -std=c++11 -o test.o tests/ProgramTest.cpp 2> /dev/null && ./test.o
 
 
-# run program
-run: compile
-	./program.o examples/configuration.server.ini examples/configuration.map-files.ini
-
-
 # clean generated files
-clean:
+clean-test:
 	rm -rf *.o
 	rm -rf program.o.*
 

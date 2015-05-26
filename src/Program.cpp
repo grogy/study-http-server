@@ -1,6 +1,5 @@
 #include <cstring>
 #include "FolderScanner.cpp"
-#include "FileWriter.cpp"
 #include "Network.cpp"
 
 using namespace std;

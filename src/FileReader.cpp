@@ -9,7 +9,6 @@ class FileReaderException {};
 
 class FileReader {
 public:
-	FileReader() = delete;
 	FileReader(string pathToFile) {
 		ifstream myfile(pathToFile);
 		if (!myfile.is_open()) {

@@ -14,6 +14,7 @@
 #include <map>
 #include <sstream>
 #include "ResponseBuilder.cpp"
+#include "FileWriter.cpp"
 
 #define BACKLOG 10     // how many pending connections queue will hold
 #define MAXDATASIZE 1000 // Makes

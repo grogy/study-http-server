@@ -1,7 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <vector>
+#include <sstream>
+#include <map>
 using namespace std;
 
 class INIReaderException {};
@@ -9,7 +10,6 @@ class INIReaderException {};
 
 class INIReader {
 public:
-	INIReader() = delete;
 	INIReader(string configuration) {
 		istringstream lines(configuration);
 		string line;
