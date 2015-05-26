@@ -4,13 +4,16 @@
 
 using namespace std;
 
+
 bool state = true;
+
 
 void sig_handler(int signum)
 {
 	printf("END Program - received signal %d\n", signum);
 	state = false;
 }
+
 
 int main(int argc, char **argv)
 {

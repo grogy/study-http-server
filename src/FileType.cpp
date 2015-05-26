@@ -1,18 +1,16 @@
-#include <string>
+#ifndef __FileType_CPP_INCLUDED__
+#define __FileType_CPP_INCLUDED__
+#include "headers/FileType.h"
 
 using namespace std;
 
-class FileType
-{
-public:
-	string getString() const {
-		return content;
-	}
-	virtual ~FileType() {}; // only for remove warnings from compilators
-	virtual string getMimeType() const = 0;
-	int getSizeInBytes() const {
-		return (int)content.size();
-	}
-protected:
-	string content;
-};
+
+string FileType::getString() const {
+	return content;
+}
+
+
+int FileType::getSizeInBytes() const {
+	return (int)content.size();
+}
+#endif

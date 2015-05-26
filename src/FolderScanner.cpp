@@ -1,40 +1,36 @@
-#include "dirent.h"
-#include <string>
+#include "headers/FolderScanner.h"
 
 using namespace std;
 
-class FolderScannerException {};
 
-class FolderScanner
-{
-public:
-	FolderScanner(string folder) {
-		folderPath = folder;
-	}
-	string getConfigurationString() {
-		DIR * dir;
-		struct dirent * entity;
-		string output = "";
-		if ((dir = opendir (folderPath.c_str())) != NULL) {
-			while ((entity = readdir (dir)) != NULL) {
-				if (isDotDirectory(string(entity->d_name))) {
-					continue;
-				}
-				output += string(entity->d_name)+"="+folderPath+entity->d_name+"\n";
+FolderScanner::FolderScanner(string folder) {
+	folderPath = folder;
+}
+
+
+string FolderScanner::getConfigurationString() {
+	DIR * dir;
+	struct dirent * entity;
+	string output = "";
+	if ((dir = opendir (folderPath.c_str())) != NULL) {
+		while ((entity = readdir (dir)) != NULL) {
+			if (isDotDirectory(string(entity->d_name))) {
+				continue;
 			}
-			closedir (dir);
-		} else {
-			// folder is not open
-			throw FolderScannerException();
+			output += string(entity->d_name)+"="+folderPath+entity->d_name+"\n";
 		}
-		return output;
+		closedir (dir);
+	} else {
+		// folder is not open
+		throw FolderScannerException();
 	}
-private:
-	string folderPath;
-	bool isDotDirectory(string name) {
-		if (name == "." || name == "..") {
-			return true;
-		}
-		return false;
+	return output;
+}
+
+
+bool FolderScanner::isDotDirectory(string name) {
+	if (name == "." || name == "..") {
+		return true;
 	}
-};
+	return false;
+}

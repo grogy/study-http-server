@@ -1,15 +1,13 @@
-#include "FileType.cpp"
+#include "headers/CssFile.h"
 
 using namespace std;
 
-class CssFile : public FileType
-{
-public:
-	CssFile(string str) {
-		content = str;
-	}
-	~CssFile() {} // only for remove warnings from compilators
-	string getMimeType() const {
-		return "text/css";
-	}
-};
+
+CssFile::CssFile(string str) {
+	content = str;
+}
+
+
+string CssFile::getMimeType() const {
+	return "text/css";
+}

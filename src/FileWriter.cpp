@@ -1,35 +1,29 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <vector>
+#include "headers/FileWriter.h"
+
 using namespace std;
 
-class FileWriterException {};
+
+FileWriter::FileWriter(string pathToFile) {
+	this->pathToFile = pathToFile;
+}
 
 
-class FileWriter {
-public:
-	FileWriter(string pathToFile) {
-		this->pathToFile = pathToFile;
+void FileWriter::write(string text) {
+	ofstream myfile(pathToFile.c_str());
+	if (!myfile.is_open()) {
+		throw FileWriterException();
 	}
-	void write(string text) {
-		ofstream myfile(pathToFile.c_str());
-		if (!myfile.is_open()) {
-			throw FileWriterException();
-		}
-		myfile << text;
-		myfile.close();
+	myfile << text;
+	myfile.close();
+}
+
+
+void FileWriter::append(string text) {
+	ofstream myfile;
+	myfile.open(pathToFile.c_str(), std::ios_base::in | std::ios_base::out | std::ios_base::app);
+	if (!myfile.is_open()) {
+		throw FileWriterException();
 	}
-	void append(string text) {
-		ofstream myfile;
-		myfile.open(pathToFile.c_str(), std::ios_base::in | std::ios_base::out | std::ios_base::app);
-		if (!myfile.is_open()) {
-			throw FileWriterException();
-		}
-		myfile << text;
-		myfile.close();
-	}
-private:
-	string pathToFile;
-	string content;
-};
+	myfile << text;
+	myfile.close();
+}

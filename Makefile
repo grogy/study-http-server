@@ -10,7 +10,7 @@ all: compile doc
 
 
 compile: $(SOURCES:.cpp=.o)
-	$(CXX) $(LDFLAGS) $(SOURCES:.cpp=.o) -o $(EXECUTABLE)
+	$(CXX) $(LDFLAGS) -o $(EXECUTABLE) src/source.cpp
 
 
 clean:

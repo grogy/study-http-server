@@ -1,5 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include "../catch.hpp"
+#include "../src/HtmlFile.cpp"
 #include "../src/Request.cpp"
 
 TEST_CASE("Complet request from browser") {

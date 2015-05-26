@@ -1,5 +1,10 @@
 #define CATCH_CONFIG_MAIN
 #include "../catch.hpp"
+#include "../src/HtmlFile.cpp"
+#include "../src/FileReader.cpp"
+#include "../src/INIReader.cpp"
+#include "../src/Request.cpp"
+#include "../src/Response.cpp"
 #include "../src/ResponseBuilder.cpp"
 
 TEST_CASE("Build HTML response", "integrate") {
