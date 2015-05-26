@@ -12,9 +12,9 @@ class FolderScanner
 {
 public:
 	FolderScanner(string folder);
-	string getConfigurationString();
+	string getConfigurationString() const;
 private:
 	string folderPath;
-	bool isDotDirectory(string name);
+	bool isDotDirectory(string name) const;
 };
 #endif

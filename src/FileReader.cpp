@@ -17,7 +17,7 @@ FileReader::FileReader(string pathToFile) {
 }
 
 
-string FileReader::getContentInString() {
+string FileReader::getContentInString() const {
 	return content;
 }
 

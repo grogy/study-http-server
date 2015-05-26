@@ -11,12 +11,12 @@ Request::Request(string headersInString) {
 }
 
 
-string Request::getHost() {
+string Request::getHost() const {
 	return headers[1].substr(6);
 }
 
 
-string Request::getURL() {
+string Request::getURL() const {
 	string url = headers[0];
 	url = url.substr(4); // remove type of Request (GET)
 	url = url.substr(0, url.find(" HTTP/1.")); // remove HTTP version

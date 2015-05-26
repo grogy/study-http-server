@@ -8,7 +8,7 @@ FolderScanner::FolderScanner(string folder) {
 }
 
 
-string FolderScanner::getConfigurationString() {
+string FolderScanner::getConfigurationString() const {
 	DIR * dir;
 	struct dirent * entity;
 	string output = "";
@@ -28,7 +28,7 @@ string FolderScanner::getConfigurationString() {
 }
 
 
-bool FolderScanner::isDotDirectory(string name) {
+bool FolderScanner::isDotDirectory(string name) const {
 	if (name == "." || name == "..") {
 		return true;
 	}

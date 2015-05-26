@@ -9,7 +9,7 @@ ResponseBuilder::ResponseBuilder(INIReader * urlConfiguration, Request * request
 }
 
 
-Response * ResponseBuilder::build() {
+Response * ResponseBuilder::build() const {
 	string requireUrl = request->getURL();
 	string pathToFile = urlConfiguration->getValue(requireUrl);
 	FileReader * reader = new FileReader(pathToFile);

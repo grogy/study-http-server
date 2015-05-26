@@ -33,13 +33,13 @@ class NetworkException {};
  */
 class Network {
 public:
-	void run(const char * port, FileWriter * logWriter, INIReader * urlConfiguration, bool * state);
+	void run(const char * port, FileWriter * logWriter, INIReader * urlConfiguration, bool * state) const;
 private:
 	/**
 	 * Get sockaddr for IPv4 or IPv6
 	 */
-	void *get_in_addr(struct sockaddr *sa);
-	int prepareSocket(const char * port);
-	void runLoop(int sockfd, FileWriter * logWriter, INIReader * urlConfiguration, bool * state);
+	void *get_in_addr(struct sockaddr *sa) const;
+	int prepareSocket(const char * port) const;
+	void runLoop(int sockfd, FileWriter * logWriter, INIReader * urlConfiguration, bool * state) const;
 };
 #endif

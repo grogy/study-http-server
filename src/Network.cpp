@@ -8,8 +8,7 @@
 using namespace std;
 
 
-void Network::run(const char * port, FileWriter * logWriter, INIReader * urlConfiguration, bool * state)
-{
+void Network::run(const char * port, FileWriter * logWriter, INIReader * urlConfiguration, bool * state) const {
 	int sockfd = prepareSocket(port);
 	runLoop(sockfd, logWriter, urlConfiguration, state);
 }
@@ -18,7 +17,7 @@ void Network::run(const char * port, FileWriter * logWriter, INIReader * urlConf
 /**
  * Get sockaddr for IPv4 or IPv6
  */
-void * Network::get_in_addr(struct sockaddr *sa) {
+void * Network::get_in_addr(struct sockaddr *sa) const {
 	if (sa->sa_family == AF_INET) {
 		return &(((struct sockaddr_in*)sa)->sin_addr);
 	}
@@ -26,7 +25,7 @@ void * Network::get_in_addr(struct sockaddr *sa) {
 }
 
 
-int Network::prepareSocket(const char * port) {
+int Network::prepareSocket(const char * port) const {
 	int sockfd;  // listen on sock_fd
 	struct addrinfo hints, *servinfo, *p;
 	int yes=1;
@@ -81,7 +80,7 @@ int Network::prepareSocket(const char * port) {
 }
 
 
-void Network::runLoop(int sockfd, FileWriter * logWriter, INIReader * urlConfiguration, bool * state) {
+void Network::runLoop(int sockfd, FileWriter * logWriter, INIReader * urlConfiguration, bool * state) const {
 	while (*state) {
 		int new_fd; //new connection on new_fd
 		struct sockaddr_storage their_addr; // connector's address information

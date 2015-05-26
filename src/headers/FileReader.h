@@ -14,7 +14,7 @@ class FileReaderException {};
 class FileReader {
 public:
 	FileReader(string pathToFile);
-	string getContentInString();
+	string getContentInString() const;
 	string getTypeOfFile() const;
 private:
 	string content;

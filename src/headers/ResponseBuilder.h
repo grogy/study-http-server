@@ -14,7 +14,7 @@ class ResponseBuilder
 {
 public:
 	ResponseBuilder(INIReader * urlConfiguration, Request * request);
-	Response * build();
+	Response * build() const;
 private:
 	INIReader * urlConfiguration;
 	Request * request;

@@ -14,7 +14,7 @@ class Response
 public:
 	Response(FileType * html);
 	~Response();
-	string getInString();
+	string getInString() const;
 private:
 	FileType * file;
 };

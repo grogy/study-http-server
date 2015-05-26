@@ -12,8 +12,8 @@ class Request
 {
 public:
 	Request(string headersInString);
-	string getHost();
-	string getURL();
+	string getHost() const;
+	string getURL() const;
 private:
 	vector<string> headers;
 };

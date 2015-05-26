@@ -14,7 +14,7 @@ Response::~Response() {
 }
 
 
-string Response::getInString() {
+string Response::getInString() const {
 	stringstream out;
 	out << file->getSizeInBytes();
 	string size = out.str();

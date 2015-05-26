@@ -20,8 +20,8 @@ class Program
 public:
 	Program(int argc, char **argv);
 	~Program();
-	void run(ostream & stream, bool * stateOfProgram);
-	void printHelp(ostream & stream);
+	void run(ostream & stream, bool * stateOfProgram) const;
+	void printHelp(ostream & stream) const;
 private:
 	short state; // todo - replace numbers something clever
 	INIReader * configurationServer;

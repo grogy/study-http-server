@@ -40,7 +40,7 @@ Program::~Program() {
 }
 
 
-void Program::run(ostream & stream, bool * stateOfProgram) {
+void Program::run(ostream & stream, bool * stateOfProgram) const {
 	Network * network = new Network();
 	string pathToLogFile;
 	FileWriter * logWriter;
@@ -66,7 +66,7 @@ void Program::run(ostream & stream, bool * stateOfProgram) {
 }
 
 
-void Program::printHelp(ostream & stream) {
+void Program::printHelp(ostream & stream) const {
 	// todo - here miss larger text
 	stream << "This is a help. TODO.." << endl;
 }
