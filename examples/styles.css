@@ -2,5 +2,11 @@ body {
 	background: #ddd;
 }
 h1 {
-	text-align: center;
+	color: darkblue;
+}
+p {
+	color: #333;
+}
+a {
+	color: blue;
 }
