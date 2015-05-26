@@ -10,7 +10,7 @@ bool state = true;
 
 void sig_handler(int signum)
 {
-	printf("END Program - received signal %d\n", signum);
+	cout << "Program end. Now it send last response for new request." << endl;
 	state = false;
 }
 
