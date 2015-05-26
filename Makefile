@@ -3,7 +3,7 @@ CXXFLAGS=-Wall -pedantic -Wno-long-long -O0 -ggdb
 LDFLAGS=
 DOXYGEN = doxygen
 EXECUTABLE=makesvac
-SOURCES=src/source.cpp src/Program.cpp src/Network.cpp src/FileReader.cpp src/FileWriter.cpp src/FolderScanner.cpp src/HtmlFile.cpp src/INIReader.cpp src/Request.cpp src/Response.cpp src/ResponseBuilder.cpp
+SOURCES=src/source.cpp src/Program.cpp src/Network.cpp src/FileReader.cpp src/FileWriter.cpp src/FolderScanner.cpp src/HtmlFile.cpp src/CssFile.cpp src/INIReader.cpp src/Request.cpp src/Response.cpp src/ResponseBuilder.cpp
 
 
 all: compile doc
@@ -40,6 +40,7 @@ test: clean
 	g++ -std=c++11 -o test.o tests/FolderScannerTest.cpp && ./test.o
 	g++ -std=c++11 -o test.o tests/INIReaderTest.cpp && ./test.o
 	g++ -std=c++11 -o test.o tests/HtmlFileTest.cpp && ./test.o
+	g++ -std=c++11 -o test.o tests/CssFileTest.cpp && ./test.o
 	g++ -std=c++11 -o test.o tests/ResponseTest.cpp && ./test.o
 	g++ -std=c++11 -o test.o tests/RequestTest.cpp && ./test.o
 	g++ -std=c++11 -o test.o tests/ResponseBuilderTest.cpp && ./test.o
