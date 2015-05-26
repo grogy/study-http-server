@@ -132,6 +132,9 @@ private:
 					perror("send");
 				}
 				logWriter->append("[client " + string(s) + "] access to page: " + request->getURL() + "\n");
+				delete request;
+				delete builder;
+				delete response;
 				close(new_fd);
 				exit(0);
 			}

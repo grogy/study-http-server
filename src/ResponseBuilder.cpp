@@ -17,6 +17,7 @@ public:
 		FileReader * reader = new FileReader(pathToFile);
 		HtmlFile * file = new HtmlFile(reader->getContentInString());
 		Response * response = new Response(file);
+		delete reader;
 		return response;
 	}
 private:

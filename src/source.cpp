@@ -16,11 +16,12 @@ int main(int argc, char **argv)
 {
 	signal(SIGINT, sig_handler);
 
+	Program * program = new Program(argc, argv);
 	try {
-		Program * program = new Program(argc, argv);
 		program->run(cout, &state);
 	} catch (ProgramBadArgumentsException & e) {
 		cout << e;
 	}
+	delete program;
 	return 0;
 }

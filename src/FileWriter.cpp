@@ -15,7 +15,7 @@ public:
 	void write(string text) {
 		ofstream myfile(pathToFile);
 		if (!myfile.is_open()) {
-			throw new FileWriterException();
+			throw FileWriterException();
 		}
 		myfile << text;
 		myfile.close();
@@ -24,7 +24,7 @@ public:
 		ofstream myfile;
 		myfile.open(pathToFile, std::ios_base::app);
 		if (!myfile.is_open()) {
-			throw new FileWriterException();
+			throw FileWriterException();
 		}
 		myfile << text;
 		myfile.close();

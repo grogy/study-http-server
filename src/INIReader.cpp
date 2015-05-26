@@ -29,7 +29,7 @@ public:
 	}
 	string getValue(string key) {
 		if (values.find(key) == values.end()) {
-			throw new INIReaderException();
+			throw INIReaderException();
 		}
 		return values[key];
 	}

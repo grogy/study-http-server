@@ -13,7 +13,7 @@ public:
 	FileReader(string pathToFile) {
 		ifstream myfile(pathToFile);
 		if (!myfile.is_open()) {
-			throw new FileReaderException();
+			throw FileReaderException();
 		}
 		string line;
 		while (getline(myfile, line)) {

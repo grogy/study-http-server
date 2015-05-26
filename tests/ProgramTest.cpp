@@ -36,7 +36,9 @@ TEST_CASE("Display help") {
 	REQUIRE_NOTHROW(Program * program = new Program(2, arr));
 	Program * program = new Program(2, arr);
 	stringstream out;
-	program->run(out);
+	bool * point = new bool;
+	*point = true;
+	program->run(out, point);
 	REQUIRE(out.str().substr(0, 14) == "This is a help");
 }
 

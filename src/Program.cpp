@@ -28,6 +28,14 @@ public:
 			FileReader * file2 = new FileReader(argv[2]);
 			configurationUrlMap = new INIReader(file2->getContentInString());
 			state = 2;
+			delete file1;
+			delete file2;
+		}
+	}
+	~Program() {
+		if (state == 2) {
+			delete configurationServer;
+			delete configurationUrlMap;
 		}
 	}
 	void run(ostream & stream, bool * stateOfProgram) {
@@ -52,6 +60,7 @@ public:
 			default:
 				throw "Invalid state in program.";
 		}
+		delete network;
 	}
 	void printHelp(ostream & stream) {
 		// todo - here miss larger text
