@@ -58,6 +58,9 @@ void Program::run(ostream & stream, bool * stateOfProgram) const {
 			logWriter = new FileWriter(pathToLogFile);
 			port = configurationServer->getValue("port");
 			network->run(port.c_str(), logWriter, urlConfiguration, stateOfProgram);
+			delete scanner;
+			delete urlConfiguration;
+			delete logWriter;
 			break;
 		default:
 			throw "Invalid state in program.";
