@@ -29,8 +29,8 @@ run: compile
 # use this command before you begin development
 # library - https://github.com/philsquared/Catch
 install-library:
-	rm -f catch.hpp
-	wget https://raw.githubusercontent.com/philsquared/Catch/master/single_include/catch.hpp
+	# rm -f catch.hpp
+	# wget https://raw.githubusercontent.com/philsquared/Catch/master/single_include/catch.hpp
 
 
 # run unit test
