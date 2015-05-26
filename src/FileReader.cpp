@@ -24,6 +24,7 @@ string FileReader::getContentInString() const {
 
 string FileReader::getTypeOfFile() const {
 	char* lastSlash;
-	lastSlash = strstr(pathToFile.c_str(), ".");
+	string dot = ".";
+	lastSlash = strstr(const_cast<char*>(pathToFile.c_str()), const_cast<char*>(dot.c_str()));
 	return string(lastSlash).substr(1);
 }
