@@ -2,7 +2,7 @@ CXX=g++
 CXXFLAGS=-Wall -pedantic -Wno-long-long -O0 -ggdb
 LDFLAGS=
 DOXYGEN = doxygen
-EXECUTABLE=makesvac
+EXECUTABLE=program
 SOURCES=src/source.cpp src/Program.cpp src/Network.cpp src/FileReader.cpp src/FileWriter.cpp src/FolderScanner.cpp src/HtmlFile.cpp src/CssFile.cpp src/INIReader.cpp src/Request.cpp src/Response.cpp src/ResponseBuilder.cpp
 
 
@@ -17,7 +17,6 @@ clean:
 	rm -rf doc/
 	$(RM) $(SOURCES:.cpp=.o) $(EXECUTABLE)
 	rm -rf program.o.* # generate with Clang
-	rm -rf makesvac.zip
 
 
 # run program
